@@ -7,8 +7,9 @@
 # Módulo de assinante (Cadastro, assinar, checar assinatura, alterar assinatura, cancelar assinatura)
 # Módulo do Admin (Criar planos, alterar Planos, checar assinaturas, cancelar tudo)
 # Projeto Sig-Beer: Um Sistema de Assinatura de Cervejas
-import admin
+import planos
 import cliente
+import produtos
 cntrl_resp_global = 0
 while cntrl_resp_global == 0:
     print("________________________________________________")
@@ -16,9 +17,10 @@ while cntrl_resp_global == 0:
     print("| Olá, seja bem-vindo ao Sig-Beer!             |")
     print("| Qual módulo deseja entrar?                   |")
     print("|                                              |")
-    print("| 1 - Cliente                                  |")
-    print("| 2 - Admin                                    |")
-    print("| 3 - Sair                                     |")
+    print("| 1 - Assinantes                               |")
+    print("| 2 - Planos                                   |")
+    print("| 3 - Produtos                                 |")
+    print("| 4 - Sair                                     |")
     print("|                                              |")
     aux = (input('| Digite aqui: '))
     print("|______________________________________________|")
@@ -27,8 +29,10 @@ while cntrl_resp_global == 0:
         case '1':
             cliente.modclient()
         case '2':     
-           admin.modadmin()
-        case '3':
+           planos.modplan()
+        case '3':     
+           produtos.modprod()
+        case '4':
             print('\nVolte sempre!')
             cntrl_resp_global = 1
         case _:
