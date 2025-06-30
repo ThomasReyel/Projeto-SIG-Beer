@@ -1,4 +1,5 @@
-def modprod():
+import os
+def modprod(produto, identificadores):
     cntrl_resp_prod = 0 
     while cntrl_resp_prod == 0:
             print("_______________________________________________________________")
@@ -15,28 +16,39 @@ def modprod():
             print("|_____________________________________________________________|")
             match aux:
                 case '1':
+                    os.system('clear')
                     print("\n_____ Cadastrar Produto _____\n")
+                    iden = identificadores['produto']
                     nome = input("|Insira o nome do produto: ")
                     tipo = input("|Insira o tipo do produto: ")
+                    produto.update({iden : [iden,nome,tipo]})
+                    identificadores['produto'] = iden+1                  
                     print("\n_____ produto cadastrado com sucesso!  _____\n")
                 case '2':
+                    os.system('clear')
                     print("\n_____ Checar Produtos _____\n")
-                    print("|produto: ")
-                    print("| - Produtos: ")
-                    print("| - tipo")
+                    for i in produto:
+                        print('id: ',produto[i][0],' - Nome: ',produto[i][1],' - Tipo: ', produto[i][2])
                 case '3':
+                    os.system('clear')
                     print("\n_____ Alterar Produtos _____\n")
-                    input('|insira o ID do produto: ')
-                    print("|Nome atual do produto: ")
-                    print("|Produtos atuais do produto: ")
-                    print("|tipo atual do produto: ")
+                    iden = int(input('|insira o ID do produto: '))
+                    print("|Nome atual do produto: ", produto[iden][1])
+                    print("|Tipo atual do produto: ",produto[iden][2])
+                    nome = input('|Insira o novo nome: ')
+                    tipo = input('|Insira o novo tipo: ')
+                    produto[iden] = [iden,nome,tipo]
                     print("\n_____ Produto Alterado com sucesso!  _____\n")
                 case '4':
+                    os.system('clear')
                     print("\n_____ Excluir Produtos _____\n")
-                    input('|insira o ID do produto: ')
+                    iden = int(input('|insira o ID do produto: '))
+                    del produto[iden]
                     print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")
                 case '5':
+                    os.system('clear')
                     cntrl_resp_prod = 1 
                 case _:
+                    os.system('clear')
                     print('\nVocê não digitou uma opção válida, tente novamente')
     cntrl_resp_prod = 0 
