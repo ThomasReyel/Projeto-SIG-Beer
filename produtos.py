@@ -1,4 +1,5 @@
 import os
+import controller
 def modprod(produto, identificadores):
     cntrl_resp_prod = 0 
     while cntrl_resp_prod == 0:
@@ -27,8 +28,7 @@ def modprod(produto, identificadores):
                 case '2':
                     os.system('clear')
                     print("\n_____ Checar Produtos _____\n")
-                    for i in produto:
-                        print('id: ',produto[i][0],' - Nome: ',produto[i][1],' - Tipo: ', produto[i][2])
+                    controller.exibirprod(produto)
                 case '3':
                     os.system('clear')
                     print("\n_____ Alterar Produtos _____\n")
