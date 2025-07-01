@@ -10,6 +10,22 @@
 import planos
 import cliente
 import produtos
+
+produto = {
+    0 : [ 0, 'Campo Dourado', 'Ale' ],
+    1 : [ 1,'Campo vermelho', 'lager' ]
+}
+clientes = {
+    0 : [0, 'Thomas Morais', 'thomas@gmail.com', 'Ouro Branco/RN']
+}
+planos = {
+    0 : [0,'Plano semestral', [0,1], 50.0, '6 meses', '2 semanas']
+}
+identificadores = {
+    'produto' : 2,
+    'assinatante' : 0,
+    'planos' : 0
+}
 cntrl_resp_global = 0
 while cntrl_resp_global == 0:
     print("________________________________________________")
@@ -31,7 +47,7 @@ while cntrl_resp_global == 0:
         case '2':     
            planos.modplan()
         case '3':     
-           produtos.modprod()
+           produtos.modprod(produto, identificadores)
         case '4':
             print('\nVolte sempre!')
             cntrl_resp_global = 1
