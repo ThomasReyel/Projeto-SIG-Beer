@@ -1,4 +1,5 @@
-def modplan():
+import controller
+def modplan(planos, identificadores, produto):
     cntrl_resp_plan = 0 
     while cntrl_resp_plan == 0:
             print("_______________________________________________________________")
@@ -16,26 +17,25 @@ def modplan():
             match aux:
                 case '1':
                     print("\n_____ Cadastrar Plano _____\n")
-                    nome = input("|Insira o nome do plano: ")
-                    tempo = input("|Insira período do plano: ")
-                    entrega = input("|Insira o tempo de entrega: ")
+                    controller.cadastroPlan(planos, identificadores, produto)
                     print("\n_____ Plano cadastrado com sucesso!  _____\n")
                 case '2':
                     print("\n_____ Checar Planos _____\n")
-                    print("|Plano: ")
-                    print("| - Produtos: ")
-                    print("| - Período")
+                    controller.exibirPlan(planos)
                 case '3':
                     print("\n_____ Alterar Planos _____\n")
-                    input('|insira o ID do plano: ')
-                    print("|Nome atual do plano: ")
-                    print("|Produtos atuais do plano: ")
-                    print("|Período atual do plano: ")
-                    print("|Tempo atual de entrega: ")
+                    iden = int(input('|insira o ID do plano: '))
+                    print("|Nome atual do plano: ", planos[iden][1])
+                    print("|Produtos atuais do plano: ", planos[iden][2])
+                    print('|Preço do plano atual: ',planos[iden][3])
+                    print("|Período atual do plano: ",planos[iden][4])
+                    print("|Tempo atual de entrega: ",planos[iden][5])
+                    controller.alterarPlan(planos,iden, produto)
                     print("\n_____ Plano Alterado com sucesso!  _____\n")
                 case '4':
                     print("\n_____ Excluir Planos _____\n")
-                    input('|insira o ID do plano: ')
+                    iden=int(input('|insira o ID do plano: '))
+                    del planos[iden]
                     print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")
                 case '5':
                     cntrl_resp_plan = 1 

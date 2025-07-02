@@ -1,4 +1,5 @@
 import os
+import controller
 def modprod(produto, identificadores):
     cntrl_resp_prod = 0 
     while cntrl_resp_prod == 0:
@@ -18,26 +19,16 @@ def modprod(produto, identificadores):
                 case '1':
                     os.system('clear')
                     print("\n_____ Cadastrar Produto _____\n")
-                    iden = identificadores['produto']
-                    nome = input("|Insira o nome do produto: ")
-                    tipo = input("|Insira o tipo do produto: ")
-                    produto.update({iden : [iden,nome,tipo]})
-                    identificadores['produto'] = iden+1                  
+                    controller.cadastroProd(produto,identificadores)
                     print("\n_____ produto cadastrado com sucesso!  _____\n")
                 case '2':
                     os.system('clear')
                     print("\n_____ Checar Produtos _____\n")
-                    for i in produto:
-                        print('id: ',produto[i][0],' - Nome: ',produto[i][1],' - Tipo: ', produto[i][2])
+                    controller.exibirProd(produto)
                 case '3':
                     os.system('clear')
                     print("\n_____ Alterar Produtos _____\n")
-                    iden = int(input('|insira o ID do produto: '))
-                    print("|Nome atual do produto: ", produto[iden][1])
-                    print("|Tipo atual do produto: ",produto[iden][2])
-                    nome = input('|Insira o novo nome: ')
-                    tipo = input('|Insira o novo tipo: ')
-                    produto[iden] = [iden,nome,tipo]
+                    controller.alterarProd(produto)
                     print("\n_____ Produto Alterado com sucesso!  _____\n")
                 case '4':
                     os.system('clear')
