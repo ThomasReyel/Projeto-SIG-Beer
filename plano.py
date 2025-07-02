@@ -17,11 +17,11 @@ def modplan(planos, identificadores, produto):
             match aux:
                 case '1':
                     print("\n_____ Cadastrar Plano _____\n")
-                    controller.cadastroplan(planos, identificadores, produto)
+                    controller.cadastroPlan(planos, identificadores, produto)
                     print("\n_____ Plano cadastrado com sucesso!  _____\n")
                 case '2':
                     print("\n_____ Checar Planos _____\n")
-                    controller.exibirplan(planos)
+                    controller.exibirPlan(planos)
                 case '3':
                     print("\n_____ Alterar Planos _____\n")
                     iden = int(input('|insira o ID do plano: '))
@@ -30,7 +30,7 @@ def modplan(planos, identificadores, produto):
                     print('|Preço do plano atual: ',planos[iden][3])
                     print("|Período atual do plano: ",planos[iden][4])
                     print("|Tempo atual de entrega: ",planos[iden][5])
-                    controller.alterarplan(planos,iden, produto)
+                    controller.alterarPlan(planos,iden, produto)
                     print("\n_____ Plano Alterado com sucesso!  _____\n")
                 case '4':
                     print("\n_____ Excluir Planos _____\n")
