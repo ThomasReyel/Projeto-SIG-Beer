@@ -7,6 +7,11 @@
 # Módulo de assinante (Cadastro, assinar, checar assinatura, alterar assinatura, cancelar assinatura)
 # Módulo do Admin (Criar planos, alterar Planos, checar assinaturas, cancelar tudo)
 # Projeto Sig-Beer: Um Sistema de Assinatura de Cervejas
+
+# Perguntar do CPF
+# Peguntar da filtragens
+# perguntar sobre o banco de dados
+# - Mostrar Controller e os menus
 import plano
 import cliente
 import produtos
