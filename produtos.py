@@ -33,8 +33,7 @@ def modprod(produto, identificadores):
                 case '4':
                     os.system('clear')
                     print("\n_____ Excluir Produtos _____\n")
-                    iden = int(input('|insira o ID do produto: '))
-                    del produto[iden]
+                    controller.deletarProd(produto)
                     print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")
                 case '5':
                     os.system('clear')

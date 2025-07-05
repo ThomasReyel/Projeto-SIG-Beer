@@ -24,13 +24,7 @@ def modplan(planos, identificadores, produto):
                     controller.exibirPlan(planos)
                 case '3':
                     print("\n_____ Alterar Planos _____\n")
-                    iden = int(input('|insira o ID do plano: '))
-                    print("|Nome atual do plano: ", planos[iden][1])
-                    print("|Produtos atuais do plano: ", planos[iden][2])
-                    print('|Preço do plano atual: ',planos[iden][3])
-                    print("|Período atual do plano: ",planos[iden][4])
-                    print("|Tempo atual de entrega: ",planos[iden][5])
-                    controller.alterarPlan(planos,iden, produto)
+                    controller.alterarPlan(planos,produto)
                     print("\n_____ Plano Alterado com sucesso!  _____\n")
                 case '4':
                     print("\n_____ Excluir Planos _____\n")

@@ -7,15 +7,22 @@ def cadastroProd(produto, identificadores):
 
 def alterarProd(produto):
     iden = int(input('|insira o ID do produto: '))
-    print("|Nome atual do produto: ", produto[iden][1])
-    print("|Tipo atual do produto: ",produto[iden][2])
-    nome = input('|Insira o novo nome: ')
-    tipo = input('|Insira o novo tipo: ')
-    produto[iden] = [iden,nome,tipo]
+    if iden in produto:
+        print("|Nome atual do produto: ", produto[iden][1])
+        print("|Tipo atual do produto: ",produto[iden][2])
+        nome = input('|Insira o novo nome: ')
+        tipo = input('|Insira o novo tipo: ')
+        produto[iden] = [iden,nome,tipo]
+    else:
+        print("\n|Esse produto não existe no banco de dados")
 
 def exibirProd(produto):
     for i in produto:
         print('| id: ',produto[i][0],' - Nome: ',produto[i][1],' - Tipo: ', produto[i][2])
+
+def deletarProd(produto):
+    iden = int(input('|insira o ID do produto: '))
+    del produto[iden]
 
 def exibirPlan(plano):
     for i in plano:
@@ -30,24 +37,40 @@ def cadastroPlan(planos,identificadores, produto):
     entrega = input("|Insira o tempo de entrega: ")
     print('|Esses são os produtos disponíveis: ')
     exibirProd(produto)
-    aux = int(input('Quantos produtos vocês quer colocar: '))
+    aux = int(input('insira quantos produtos vocês quer colocar: '))
     for i in range(aux):
-        prod.append(int(input('insira os IDs')))
+        prod.append(int(input('insira os IDs: ')))
     planos.update({iden : [iden,nome,prod,preco,periodo,entrega]})
     identificadores['plano'] = iden+1  
 
-def alterarPlan(planos,identificador, produto):
+def alterarPlan(planos, produto):
     prod = []
-    nome = input("|Insira o nome do plano: ")
-    preco = float(input("|Insira o preço do plano: "))
-    periodo = input("|Insira o periodo do plano: ")
-    entrega = input("|Insira o tempo de entrega: ")
-    print('|Esses são os produtos disponíveis: ')
-    exibirProd(produto)
-    aux = int(input('Quantos produtos vocês quer colocar: '))
-    for i in range(aux):
-        prod.append(int(input('insira os IDs')))
-    planos[identificador] = [identificador,nome,prod,preco,periodo,entrega]
+    iden = int(input('|insira o ID do plano: '))
+    if iden in planos:
+        print("|Nome atual do plano: ", planos[iden][1])
+        print("|Produtos atuais do plano: ", planos[iden][2])
+        print('|Preço do plano atual: ',planos[iden][3])
+        print("|Período atual do plano: ",planos[iden][4])
+        print("|Tempo atual de entrega: ",planos[iden][5])
+        nome = input("|Insira o nome do plano: ")
+        preco = float(input("|Insira o preço do plano: "))
+        periodo = input("|Insira o periodo do plano: ")
+        entrega = input("|Insira o tempo de entrega: ")
+        print('|Esses são os produtos disponíveis: ')
+        exibirProd(produto)
+        aux = int(input('Quantos produtos vocês quer colocar: '))
+        for i in range(aux):
+            prod.append(int(input('insira os IDs')))
+        planos[iden] = [iden,nome,prod,preco,periodo,entrega]
+    else:
+        print("\n|Esse plano não existe no banco de dados")
+
+def deletarPlan(assinaturas, planos):
+    iden = int(input('|insira o ID do plano: '))
+    del planos[iden]
+    for i in assinaturas:
+        if assinaturas[i][2] == iden:
+            del assinaturas[i]
 
 def cadastrarCli(cliente,identificadores,planos, assinaturas):
     idenCli = identificadores['cliente']
@@ -69,13 +92,23 @@ def exibirCli(cliente):
 
 def alterarCli(cliente):
     iden = int(input('|insira o ID do cliente: '))
-    print("|Nome atual do cliente: ", cliente[iden][1])
-    print("|Email atual do cliente: ",cliente[iden][2])
-    print("|Endereço atual do cliente: ",cliente[iden][3])
-    nome = input('|Insira o novo nome: ')
-    email = input('|Insira o novo email: ')
-    endereco = input('|Insira o novo endereço: ')
-    cliente[iden] = [iden,nome,email,endereco]
+    if iden in cliente:
+        print("|Nome atual do cliente: ", cliente[iden][1])
+        print("|Email atual do cliente: ",cliente[iden][2])
+        print("|Endereço atual do cliente: ",cliente[iden][3])
+        nome = input('|Insira o novo nome: ')
+        email = input('|Insira o novo email: ')
+        endereco = input('|Insira o novo endereço: ')
+        cliente[iden] = [iden,nome,email,endereco]
+    else:
+        print("\n|Esse cliente não existe no banco de dados")
+
+def deletarCli(assinaturas, clientes):
+    iden = int(input('|insira o ID do cliente: '))
+    del clientes[iden]
+    for i in assinaturas:
+        if assinaturas[i][1] == iden:
+            del assinaturas[i]
     
 def exibirAss(assinaturas, clientes, planos):
     for i in assinaturas:
@@ -83,8 +116,15 @@ def exibirAss(assinaturas, clientes, planos):
 
 def alterarAss(assinaturas, clientes, planos):
     iden = int(input('|insira o ID da assinatura: '))
-    print('| Esse é o ID atual do Assinante:', assinaturas[iden][1], ' (', clientes[assinaturas[iden][1]][1] ,')')
-    print('| Esse é o ID atual do Plano:', assinaturas[iden][2], ' (', planos[assinaturas[iden][2]][1] ,')')
-    idCli = int(input('| Insira o no ID do cliente:'))
-    idPlan = int(input('| Insira o no ID do plano:'))
-    assinaturas[iden] = [iden,idCli,idPlan]
+    if iden in assinaturas:
+        print('| Esse é o ID atual do Assinante:', assinaturas[iden][1], ' (', clientes[assinaturas[iden][1]][1] ,')')
+        print('| Esse é o ID atual do Plano:', assinaturas[iden][2], ' (', planos[assinaturas[iden][2]][1] ,')')
+        idCli = int(input('| Insira o no ID do cliente:'))
+        idPlan = int(input('| Insira o no ID do plano:'))
+        assinaturas[iden] = [iden,idCli,idPlan]
+    else:
+        print("\n|Essa Assinatura não existe no banco de dados")
+
+def deletarAss(assinaturas):
+    iden = int(input('|insira o ID da assinatura: '))
+    del assinaturas[iden]

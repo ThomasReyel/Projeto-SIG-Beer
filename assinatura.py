@@ -23,8 +23,7 @@ def modassin(assinaturas, clientes, planos):
                     print("\n_____ assinatura Alterado com sucesso!  _____\n")
                 case '3':
                     print("\n_____ Excluir assinaturas _____\n")
-                    iden = int(input('|insira o ID do assinatura: '))
-                    del assinaturas[iden]
+                    controller.deletarAss(assinaturas)
                     print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")
                 case '4':
                     cntrl_resp_assin = 1 
