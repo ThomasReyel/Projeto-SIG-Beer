@@ -13,6 +13,7 @@ def alterarProd(produto):
         nome = input('|Insira o novo nome: ')
         tipo = input('|Insira o novo tipo: ')
         produto[iden] = [iden,nome,tipo]
+        print("\n_____ Produto Alterado com sucesso!  _____\n")
     else:
         print("\n|Esse produto não existe no banco de dados")
 
@@ -21,8 +22,12 @@ def exibirProd(produto):
         print('| id: ',produto[i][0],' - Nome: ',produto[i][1],' - Tipo: ', produto[i][2])
 
 def deletarProd(produto):
-    iden = int(input('|insira o ID do produto: '))
-    del produto[iden]
+    if iden in produto:
+        iden = int(input('|insira o ID do produto: '))
+        del produto[iden]
+        print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")
+    else: 
+        print("\n| Produto não encontrado no Banco de dados")
 
 def exibirPlan(plano):
     for i in plano:
@@ -62,15 +67,20 @@ def alterarPlan(planos, produto):
         for i in range(aux):
             prod.append(int(input('insira os IDs')))
         planos[iden] = [iden,nome,prod,preco,periodo,entrega]
+        print("\n_____ Plano Alterado com sucesso!  _____\n")
     else:
         print("\n|Esse plano não existe no banco de dados")
 
 def deletarPlan(assinaturas, planos):
     iden = int(input('|insira o ID do plano: '))
-    del planos[iden]
-    for i in assinaturas:
-        if assinaturas[i][2] == iden:
-            del assinaturas[i]
+    if iden in planos:
+        del planos[iden]
+        for i in assinaturas:
+            if assinaturas[i][2] == iden:
+                del assinaturas[i]
+        print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")
+    else:
+        print("\n| Produto não encontrado no banco de dados")
 
 def cadastrarCli(cliente,identificadores,planos, assinaturas):
     idenCli = identificadores['cliente']
@@ -100,19 +110,24 @@ def alterarCli(cliente):
         email = input('|Insira o novo email: ')
         endereco = input('|Insira o novo endereço: ')
         cliente[iden] = [iden,nome,email,endereco]
+        print("\n_____ Conta atualizada com sucesso!  _____\n")
     else:
         print("\n|Esse cliente não existe no banco de dados")
 
 def deletarCli(assinaturas, clientes):
     iden = int(input('|insira o ID do cliente: '))
-    del clientes[iden]
-    for i in assinaturas:
-        if assinaturas[i][1] == iden:
-            del assinaturas[i]
+    if iden in clientes:
+        del clientes[iden]
+        for i in range(len(assinaturas)):
+            if assinaturas[i][1] == iden:
+                del assinaturas[i]
+        print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")  
+    else:
+        print("\n| Cliente não encontrado no banco de dados")
     
 def exibirAss(assinaturas, clientes, planos):
     for i in assinaturas:
-        print('| id: ',assinaturas[i][0],' - Cliente: ', clientes[assinaturas[i][1]][1],' - Plano: ', planos[assinaturas[i][2]][1])
+            print('| id: ',assinaturas[i][0],' - Cliente: ', clientes[assinaturas[i][1]][1],' - Plano: ', planos[assinaturas[i][2]][1])
 
 def alterarAss(assinaturas, clientes, planos):
     iden = int(input('|insira o ID da assinatura: '))
@@ -122,9 +137,15 @@ def alterarAss(assinaturas, clientes, planos):
         idCli = int(input('| Insira o no ID do cliente:'))
         idPlan = int(input('| Insira o no ID do plano:'))
         assinaturas[iden] = [iden,idCli,idPlan]
+        print("\n_____ assinatura Alterado com sucesso!  _____\n")
+
     else:
         print("\n|Essa Assinatura não existe no banco de dados")
 
 def deletarAss(assinaturas):
     iden = int(input('|insira o ID da assinatura: '))
-    del assinaturas[iden]
+    if iden in assinaturas:
+        del assinaturas[iden]
+        print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")
+    else:
+        print("\n| Assinatura não encontrada")

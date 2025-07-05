@@ -20,11 +20,9 @@ def modassin(assinaturas, clientes, planos):
                 case '2':
                     print("\n_____ Alterar assinaturas _____\n")
                     controller.alterarAss(assinaturas,clientes,planos)
-                    print("\n_____ assinatura Alterado com sucesso!  _____\n")
                 case '3':
                     print("\n_____ Excluir assinaturas _____\n")
                     controller.deletarAss(assinaturas)
-                    print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")
                 case '4':
                     cntrl_resp_assin = 1 
                 case _:

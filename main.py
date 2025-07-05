@@ -5,7 +5,10 @@ import produtos
 import assinatura
 import pickle
 
-bdprodutos = {0: [0,'campo vermelho', 'ale']}
+bdprodutos = {
+    0 : [ 0, 'Campo Dourado', 'Ale' ],
+    1 : [ 1,'Campo vermelho', 'lager' ]
+}
 try:
   arq_produtos = open("banco_de_dados/produtos.dat", "rb")
   bdprodutos = pickle.load(arq_produtos)
@@ -13,7 +16,7 @@ except:
   arq_produtos = open("banco_de_dados/produtos.dat", "wb")
 arq_produtos.close()
 
-bdclientes = {}
+bdclientes = {0 : [0, 'Thomas Morais', 'thomas@gmail.com', 'Ouro Branco/RN']}
 try:
   arq_clientes = open("banco_de_dados/clientes.dat", "rb")
   bdclientes = pickle.load(arq_clientes)
@@ -21,7 +24,7 @@ except:
   arq_clientes = open("banco_de_dados/clientes.dat", "wb")
 arq_clientes.close()
 
-bdplanos = {}
+bdplanos = {0 : [0,'Plano semestral', [0,1], 50.0, '6 meses', '2 semanas']}
 try:
   arq_planos = open("banco_de_dados/planos.dat", "rb")
   bdplanos = pickle.load(arq_planos)
@@ -29,7 +32,10 @@ except:
   arq_planos = open("banco_de_dados/planos.dat", "wb")
 arq_planos.close()
 
-bdassinaturas = {}
+bdassinaturas = {
+    # 1° é o id prório, 2° é do cliente 3° é do plano
+    0 : [0,0,0]
+}
 try:
   arq_assinaturas = open("banco_de_dados/assinaturas.dat", "rb")
   bdassinaturas = pickle.load(arq_assinaturas)
@@ -63,7 +69,7 @@ while cntrl_resp_global == 0:
         case '1':
             cliente.modclient(bdclientes, identificadores,bdplanos,bdassinaturas)
         case '2':     
-           plano.modplan(bdplanos, identificadores, bdprodutos)
+           plano.modplan(bdplanos, identificadores, bdprodutos,bdassinaturas)
         case '3':     
            produtos.modprod(bdprodutos, identificadores)
         case '4':

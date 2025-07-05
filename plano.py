@@ -1,5 +1,5 @@
 import controller
-def modplan(planos, identificadores, produto):
+def modplan(planos, identificadores, produto, assinaturas):
     cntrl_resp_plan = 0 
     while cntrl_resp_plan == 0:
             print("_______________________________________________________________")
@@ -25,12 +25,9 @@ def modplan(planos, identificadores, produto):
                 case '3':
                     print("\n_____ Alterar Planos _____\n")
                     controller.alterarPlan(planos,produto)
-                    print("\n_____ Plano Alterado com sucesso!  _____\n")
                 case '4':
                     print("\n_____ Excluir Planos _____\n")
-                    iden=int(input('|insira o ID do plano: '))
-                    del planos[iden]
-                    print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")
+                    controller.deletarPlan(assinaturas,planos) 
                 case '5':
                     cntrl_resp_plan = 1 
                 case _:

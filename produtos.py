@@ -29,12 +29,10 @@ def modprod(produto, identificadores):
                     os.system('clear')
                     print("\n_____ Alterar Produtos _____\n")
                     controller.alterarProd(produto)
-                    print("\n_____ Produto Alterado com sucesso!  _____\n")
                 case '4':
                     os.system('clear')
                     print("\n_____ Excluir Produtos _____\n")
                     controller.deletarProd(produto)
-                    print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")
                 case '5':
                     os.system('clear')
                     cntrl_resp_prod = 1 
