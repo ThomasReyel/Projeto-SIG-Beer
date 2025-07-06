@@ -23,14 +23,11 @@ def modclient(clientes, identificadores, planos, assinaturas):
                 print("\n_____ Checar Conta Cliente _____\n")
                 controller.exibirCli(clientes)
             case '3':
-                print("\n_____ Alterar Assinatura Cliente _____\n")
+                print("\n_____ Alterar Cliente _____\n")
                 controller.alterarCli(clientes)
-                print("\n_____ Conta atualizada com sucesso!  _____\n")
             case '4':
-                print("\n_____ Cancelar Assinatura Cliente _____\n")
-                iden = int(input("Insira o seu ID: "))
-                del clientes[iden]
-                print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")               
+                print("\n_____ Cancelar Cliente _____\n")
+                controller.deletarCli(assinaturas, clientes)             
             case '5':
                 cntrl_resp_cli = 1 
             case _:

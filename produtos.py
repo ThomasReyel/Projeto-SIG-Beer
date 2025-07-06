@@ -17,29 +17,20 @@ def modprod(produto, identificadores):
             print("|_____________________________________________________________|")
             match aux:
                 case '1':
-                    os.system('clear')
                     print("\n_____ Cadastrar Produto _____\n")
                     controller.cadastroProd(produto,identificadores)
                     print("\n_____ produto cadastrado com sucesso!  _____\n")
                 case '2':
-                    os.system('clear')
                     print("\n_____ Checar Produtos _____\n")
                     controller.exibirProd(produto)
                 case '3':
-                    os.system('clear')
                     print("\n_____ Alterar Produtos _____\n")
                     controller.alterarProd(produto)
-                    print("\n_____ Produto Alterado com sucesso!  _____\n")
                 case '4':
-                    os.system('clear')
                     print("\n_____ Excluir Produtos _____\n")
-                    iden = int(input('|insira o ID do produto: '))
-                    del produto[iden]
-                    print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")
+                    controller.deletarProd(produto)
                 case '5':
-                    os.system('clear')
                     cntrl_resp_prod = 1 
                 case _:
-                    os.system('clear')
                     print('\nVocê não digitou uma opção válida, tente novamente')
     cntrl_resp_prod = 0 

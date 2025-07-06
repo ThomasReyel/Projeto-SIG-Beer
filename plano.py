@@ -1,5 +1,5 @@
 import controller
-def modplan(planos, identificadores, produto):
+def modplan(planos, identificadores, produto, assinaturas):
     cntrl_resp_plan = 0 
     while cntrl_resp_plan == 0:
             print("_______________________________________________________________")
@@ -24,19 +24,10 @@ def modplan(planos, identificadores, produto):
                     controller.exibirPlan(planos)
                 case '3':
                     print("\n_____ Alterar Planos _____\n")
-                    iden = int(input('|insira o ID do plano: '))
-                    print("|Nome atual do plano: ", planos[iden][1])
-                    print("|Produtos atuais do plano: ", planos[iden][2])
-                    print('|Preço do plano atual: ',planos[iden][3])
-                    print("|Período atual do plano: ",planos[iden][4])
-                    print("|Tempo atual de entrega: ",planos[iden][5])
-                    controller.alterarPlan(planos,iden, produto)
-                    print("\n_____ Plano Alterado com sucesso!  _____\n")
+                    controller.alterarPlan(planos,produto)
                 case '4':
                     print("\n_____ Excluir Planos _____\n")
-                    iden=int(input('|insira o ID do plano: '))
-                    del planos[iden]
-                    print("\n_____ Conta Excluída com sucesso com sucesso!  _____\n")
+                    controller.deletarPlan(assinaturas,planos) 
                 case '5':
                     cntrl_resp_plan = 1 
                 case _:
